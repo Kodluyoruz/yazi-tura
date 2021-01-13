@@ -1,18 +1,9 @@
-# Proje Nasıl Çalıştırılır
+### Yapılan Değişiklikler
 
-- Projeyi fork'ladıktan ya da indirdikten sonra projenin bulunduğu klasörde "npm install" komutu ile gerekli paketlerin yüklenmesi gerekiyor.
-- Daha sonra "npm run start" komutu ile uygulama başlatılabilir.
-
-### Proje Hakkında
-
-App.js'de görüldüğü üzere CoinFlipper adlı bir component render ediyoruz. Bu component'in state'i içerisinde "side" ve "flipping" olarak 2 farklı bilgi tutuyoruz. Tutulan bu bilgiler Coin adında farklı bir component'e prop olarak geçiliyor ve Coin component'i içerisinde bu prop'a göre paranın hangi yüzü geleceğine karar verilip render ediliyor.
-
-### Yapılacaklar
-
-1. Yapmamız gereken altta statik olarak yazan "Toplam 5 atıştan 3 ü tura 2 si yazı geldi." yazısını dinamik hale getirmek. Yani kaç atış yapıldığını, kaç tanesinin tura geldiğini, kaç tanesinin yazı geldiğini yazdırmamız gerekiyor.
-2. Yazı-tura gelme durumunu rastgele hale getirmemiz gerekiyor, şu an görüleceği üzere sadece tura geliyor.
-
-### İpuçları
-
-1. Butona basıldıkça atış yapıyoruz, dolayısıyla toplam atış sayısını hesaplamak için state'de bunun için bir değer tutmalı, buton her tıklandığında bu değeri 1 artırmalıyız.
-2. Yazı-tura durumu rastgele belirlenecek. Bunu sağlamak için 0 ve 1 sayıları arasında rastgele seçim yapacak bir fonksiyon yazabiliriz. 0 bizim için turayı, 1 bizim için yazıyı temsil edebilir. Kodu incelediğinizde göreceğiniz, parayı döndürme işleminin olduğu yerde rastgele gelen bu yeni değeri state'e atabiliriz.
+1. constant.js içerisinde yazı-tura değerlerini tutan options adlı bir array oluşturuldu.
+2. helpers.js oluşturuldu ve 2 adet helper metot yazıldı.
+   - Bir array içinden rastgele eleman seçen bir metot
+   - Bir array içindeki aranan değerin toplam kaç tane olduğunu bulan bir metot
+3. CoinFlipper içindeki state'te "side" tura yerine artık options array'inin 0. elemanını tutuyor.
+4. CoinFlipper içindeki state'e rastgele seçilen yazı-tura bilgilerini tutmak için "flips" eklendi. Bu array'in length'i kullanılarak dinamik olarak toplam atış sayısı bulunuyor.
+5. Options array'inde map yapıldıktan sonra findTotal fonksiyonu sayesinde kaç yazı kaç tura geldiği bulunuyor ve dinamik olarak gösteriliyor.

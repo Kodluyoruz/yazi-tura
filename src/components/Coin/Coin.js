@@ -10,10 +10,12 @@ const Coin = (props) => {
         <img
           src={CoinTura}
           className={props.side === "yazi" ? "Coin-back" : "Coin-front"}
+          alt="Tura"
         />
         <img
           src={CoinYazi}
           className={props.side === "yazi" ? "Coin-front" : "Coin-back"}
+          alt="Yazı"
         />
       </div>
     </div>

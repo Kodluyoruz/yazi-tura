@@ -1,22 +1,31 @@
 import React, { Component } from "react";
 import Coin from "../Coin/Coin";
 import "./CoinFlipper.css";
+import options from "../../constants";
+import { getRandomElement, findTotal } from "../../helpers";
 
 class CoinFlipper extends Component {
   constructor(props) {
     super(props);
-    // State üzerinde paranın başlangıçtaki durumunu veriyoruz, başlangıçta "tura" olsun.
-    // Daha sonra şu anda paranın dönüp dönmeme durumunu da veriyoruz, başlangıçta para atılmamış olduğundan "false" olarak verdik.
     this.state = {
-      side: "tura",
+      side: options[0],
       flipping: false,
+      flips: [],
     };
   }
   handleClick = () => {
-    // "At!" butonuna tıkladığımızda paranın dönmesini istiyoruz, bu yüzden "flipping" durumunu "true" yapıyoruz.
     this.setState({ flipping: true });
-    // 1 saniye kadar dönmesi yeterli, bu yüzden 1 saniye sonra "flipping" durmunu tekrar "false" yapıyoruz.
-    setTimeout(() => this.setState({ flipping: false }), 1000);
+    const randomElement = getRandomElement(options);
+    setTimeout(
+      () =>
+        this.setState({ flipping: false }, () => {
+          this.setState({
+            side: randomElement,
+            flips: [...this.state.flips].concat([randomElement]),
+          });
+        }),
+      1000
+    );
   };
 
   render() {
@@ -27,11 +36,18 @@ class CoinFlipper extends Component {
         <button onClick={this.handleClick}>At!</button>
         <p>
           Toplam
-          <strong> 5 </strong>
+          <strong> {this.state.flips.length} </strong>
           atıştan
-          <strong> 3 </strong>ü tura
-          <strong> 2 </strong>
-          si yazı geldi.
+          <div>
+            {options.map((option) => {
+              return (
+                <div key={option}>
+                  <strong> {findTotal(this.state.flips, option)} </strong>
+                  {option}
+                </div>
+              );
+            })}
+          </div>
         </p>
       </div>
     );
