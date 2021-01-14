@@ -2,6 +2,8 @@
 
 Yalnızca bir madeni paraya ihtiyaç duyulan, oldukça kolay oynanabilecek ve dünyanın hemen her yerinde yaygın olan yazı tura oyunu React ile yapalım.
 
+![yazi-tura](/yazi-tura.gif)
+
 ### Proje Nasıl Çalıştırılır
 
 - Projeyi fork'ladıktan ya da indirdikten sonra projenin bulunduğu klasörde "npm install" komutu ile gerekli paketlerin yüklenmesi gerekiyor.
